@@ -4,7 +4,7 @@
     <hr />
     <br />
     <photoForm v-if="!photoId" v-on:photoId="onSubmit"></photoForm>
-    <upload v-else :photoId="photoId"></upload>
+    <upload v-else :photoId="photoId" v-on:photoId="onSubmit"></upload>
   </div>
 </template>
 

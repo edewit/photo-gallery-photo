@@ -1,6 +1,9 @@
 <template>
   <div class="file-upload">
-    {{photoId}}
+    <div v-if="error">
+      <b>Error while uploading your image: {{error}}</b>
+    </div>
+
     <label for="upload" class="file-upload__label">Upload image</label>
     <input
       id="upload"
@@ -18,7 +21,8 @@ import axios from "axios";
 
 export default {
   props: {
-    photoId: Number
+    photoId: Number,
+    error: undefined
   },
   methods: {
     upload: function() {
@@ -26,19 +30,14 @@ export default {
       const formData = new FormData();
       formData.append("file", file);
       formData.append("id", this.photoId);
-      /*eslint no-console: "off"*/
       axios
         .post("/photos/upload", formData, {
           headers: {
             "Content-Type": "multipart/form-data"
           }
         })
-        .then(function() {
-          console.log("SUCCESS!!");
-        })
-        .catch(function() {
-          console.log("FAILURE!!");
-        });
+        .then(() => this.$emit('photoId', undefined))
+        .catch((e) => this.error = e.message);
     }
   }
 };

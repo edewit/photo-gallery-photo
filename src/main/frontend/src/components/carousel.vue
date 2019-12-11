@@ -98,7 +98,6 @@ ol {
   padding: 10px;
 }
 img {
-  display: none;
   width:100%;
   max-width: 200px;
 }
@@ -106,12 +105,11 @@ li {
   opacity: 0;
   transition: 1s;
   list-style: none;
+  display: none;
 }
 li.current {
   opacity: 1;
   transition: 1s;
-}
-li.current > img {
   display: block;
 }
 .caption {
