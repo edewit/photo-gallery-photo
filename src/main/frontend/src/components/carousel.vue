@@ -7,22 +7,19 @@
 
     <section v-else>
       <div v-show="loading">Loading...</div>
-      <div v-show="!loading" class="carouselbox" ref="box">
-        <div class="buttons">
-          <button class="prev" v-on:click="navigate(-1)">
-            ◀
-            <span class="offscreen">Previous</span>
-          </button>
-          <button class="next" v-on:click="navigate(1)">
-            <span class="offscreen">Next</span> ▶
-          </button>
-        </div>
+      <div v-show="!loading" class="carouselbox">
+        <button class="prev" @click="navigate(-1)" title="Previous">
+          ◀
+        </button>
         <ol>
-          <li v-for="photo in photos" v-bind:key="photo.id">
-            <img v-bind:src="'/photos/' + photo.id" />
+          <li v-for="photo in photos" :key="photo.id">
+            <img :src="'/photos/' + photo.id" />
             <div class="caption">{{photo.name}}</div>
           </li>
         </ol>
+        <button class="next" @click="navigate(1)" title="Next">
+          ▶
+        </button>
       </div>
     </section>
   </div>
@@ -67,7 +64,7 @@ export default {
       .finally(() => {
         this.loading = false;
 
-        this.items = this.$el.querySelectorAll('li');
+        this.items = this.$el.querySelectorAll("li");
         this.navigate(0);
       });
   }
@@ -75,31 +72,17 @@ export default {
 </script>
 
 <style scoped>
-.buttons {
-  padding: 5px 0;
-  background: #eee;
-  text-align: center;
-  z-index: 10;
-  position: relative;
-}
 .carouselbox {
-  width: 200px;
-  border: 1px solid #ccc;
-  box-shadow: 2px 2px 10px #ccc;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
 }
 .carouselbox button {
   border: none;
 }
-.offscreen {
-  position: absolute;
-  left: -2000px;
-}
 ol {
-  padding: 10px;
-}
-img {
-  width:100%;
-  max-width: 200px;
+  flex-grow: 1;
+  text-align: center;
 }
 li {
   opacity: 0;
@@ -113,7 +96,6 @@ li.current {
   display: block;
 }
 .caption {
-  text-align: center;
   font-style: italic;
 }
 </style>
