@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve --port 3000",
     "build": "vue-cli-service build",
+    "build:wc": "vue-cli-service build --target wc --name photo 'src/components/*.vue'",
     "lint": "vue-cli-service lint",
     "copy-to-resources": "export TARGET_DIR=../../../target/classes/META-INF/resources && mkdir -p ${TARGET_DIR} && cp -R ./dist/. ${TARGET_DIR}"
   },
