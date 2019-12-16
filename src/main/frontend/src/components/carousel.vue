@@ -46,6 +46,7 @@ export default {
         this.counter = 0;
       }
       this.items[this.counter].classList.add("current");
+      this.$emit("photoId", this.photos[this.counter].id);
     }
   },
   mounted() {
