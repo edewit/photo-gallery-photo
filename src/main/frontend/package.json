@@ -2,6 +2,7 @@
   "name": "photo",
   "version": "0.1.0",
   "private": true,
+  "main": "./dist/photo.js",
   "scripts": {
     "serve": "vue-cli-service serve --port 3000",
     "build": "vue-cli-service build",
