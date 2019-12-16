@@ -8,18 +8,14 @@
     <section v-else>
       <div v-show="loading">Loading...</div>
       <div v-show="!loading" class="carouselbox">
-        <button class="prev" @click="navigate(-1)" title="Previous">
-          ◀
-        </button>
+        <button class="prev" @click="navigate(-1)" title="Previous">◀</button>
         <ol>
           <li v-for="photo in photos" :key="photo.id">
             <img :src="'/photos/' + photo.id" />
             <div class="caption">{{photo.name}}</div>
           </li>
         </ol>
-        <button class="next" @click="navigate(1)" title="Next">
-          ▶
-        </button>
+        <button class="next" @click="navigate(1)" title="Next">▶</button>
       </div>
     </section>
   </div>
